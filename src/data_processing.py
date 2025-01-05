@@ -26,4 +26,19 @@ class DataProcessing:
         self.data.dropna(inplace=True)
         print("Datos limpios, con valores nulos eliminados")
         
+    def get_atributes(self):
+        return self.data.columns.tolist() #'#', 'claim_status', 'video_id', 'video_duration_sec', 'video_transcription_text', 'verified_status', 'author_ban_status', 'video_view_count', 'video_like_count', 'video_share_count', 'video_download_count', 'video_comment_count']
+    
+    def delite_atributes(self, list_atributes):
+        self.data.drop(columns=list_atributes, inplace=True)
+        print(f"Columnas {list_atributes} eliminadas")
+        
+    def encode_verified_status(self):
+        self.data['verified_status'] = self.data['verified_status'].map({'verified': 1, 'not verified': 0})
+        print("Columna 'verified_status' codificada")
+        
+    def save_dataset(self, path):
+        self.data.to_csv(path, index=False)
+        print(f"Datos guardados en {path}")
+        
         
