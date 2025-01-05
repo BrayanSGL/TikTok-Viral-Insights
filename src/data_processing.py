@@ -41,4 +41,6 @@ class DataProcessing:
         self.data.to_csv(path, index=False)
         print(f"Datos guardados en {path}")
         
-        
+    def describe(self):
+        print(self.data.describe())
+   
