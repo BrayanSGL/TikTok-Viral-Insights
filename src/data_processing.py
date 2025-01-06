@@ -1,4 +1,6 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns #sirve para hacer graficos mas bonitos
 
 class DataProcessing:
     def __init__(self, dataset_path):
@@ -43,4 +45,22 @@ class DataProcessing:
         
     def describe(self):
         print(self.data.describe())
+        #guadar los resultados de la descripcion en un csv
+        self.data.describe().to_csv('data/processed/analytics/description.csv')
+        
+    def plot_correlation(self):
+        plt.figure(figsize=(12, 8))
+        sns.heatmap(self.data.corr(), annot=True, cmap='coolwarm')
+        plt.title("Correlación de atributos")
+        #guardar imagen en formato png
+        plt.savefig('data/processed/analytics/correlation.png')
+        
+        # guardar los resultados de la correlacion en un csv
+        self.data.corr().to_csv('data/processed/analytics/correlation.csv')
+        
+    def plot_histogram(self):
+        self.data.hist(figsize=(12, 8))
+        plt.suptitle("Histograma de atributos")
+        plt.savefig('data/processed/analytics/histogram.png')
+                  
    

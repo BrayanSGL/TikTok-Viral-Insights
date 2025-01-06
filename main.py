@@ -12,6 +12,9 @@ def main():
     data.encode_verified_status()  # Codifica el estado verificado
     data.save_dataset(dataset_parh_processed)  # Guarda el dataset procesado
     data.describe()  # Muestra estadisticas del dataset
+    data.plot_correlation()  # Grafica la correlacion de los atributos
+    data.plot_histogram()  # Grafica el histograma de los atributos
+    
 
 if __name__ == "__main__":
     main()
